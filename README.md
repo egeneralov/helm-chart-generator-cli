@@ -4,10 +4,6 @@ Command-line client and python library for [Helm Chart Generator API](https://gi
 
 ## QuickStart
 
-- run hcg api
-- install cli
-- generate and save chart localy
-
   docker run -d --name hcg --rm -p 8080:8080 egeneralov/helm-chart-generator
   pip3 install git+https://github.com/egeneralov/helm-chart-generator-cli
 
