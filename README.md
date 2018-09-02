@@ -20,6 +20,7 @@ Command-line client and python library for [Helm Chart Generator API](https://gi
 - image: registry.domain.com/path/to/image
 - tag: latest
 - save: save chart to current directory
+- secret: docker registry secret
 
 ## Python-way
 

@@ -15,7 +15,7 @@ class helmGeneratorClient:
     - imageTag
     - application port
   '''
-  def __init__(self, endpoint, host, version, image, imageTag, port):
+  def __init__(self, endpoint, host, version, image, imageTag, port, secret=None):
     # fix endpoint
     if not endpoint.startswith('http'):
       endpoint = 'http://' + endpoint
@@ -27,6 +27,8 @@ class helmGeneratorClient:
       'imageTag': imageTag,
       'port': int(port)
     }
+    if secret:
+      self.params['imagePullSecret'] = secret
     # run action
     self.filename = self.generate()
 
@@ -62,6 +64,7 @@ def cli():
   parser.add_argument("--version", required=True, help="deployment version")
   parser.add_argument("--image", required=True, help="registry.com/image")
   parser.add_argument("--tag", required=True, help="image tag")
+  parser.add_argument("--secret", required=False, type=str, default=None, help="imagePullSecret name")
   parser.add_argument("--save", required=False, help="download chart to current directory", action='store_true')
   #~ parser.add_argument("--silient", required=False, help="silient action", action='store_true')
   args = parser.parse_args()
@@ -73,7 +76,8 @@ def cli():
     version = args.version,
     image = args.image,
     imageTag = args.tag,
-    port = args.port
+    port = args.port,
+    secret = args.secret
   )
   #~ print(client.filename)
   #~ print(len(client.archive))
