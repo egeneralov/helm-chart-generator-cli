@@ -1,6 +1,6 @@
 # Helm Chart Generator
 
-Command-line client and library for python.
+Command-line client and python library for [Helm Chart Generator API](https://github.com/egeneralov/helm-chart-generator-api).
 
 ## QuickStart
 
