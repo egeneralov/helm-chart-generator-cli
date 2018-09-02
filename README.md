@@ -20,3 +20,18 @@ Command-line client and python library for [Helm Chart Generator API](https://gi
 - image: registry.domain.com/path/to/image
 - tag: latest
 - save: save chart to current directory
+
+## Python-way
+
+    from hcg import helmGeneratorClient
+    chart = helmGeneratorClient(
+      endpoint = 'http://178.128.193.32:1234',
+      host = 'my.app.domain.com',
+      version = '1.2.3',
+      image = 'registry.domain.com/group/project',
+      imageTag = 'latest',
+      port = 8080
+    )
+    chart.filename == 'my.app.domain.com-1.2.3.tgz'
+    chart.download()
+    tgz = chart.archive
